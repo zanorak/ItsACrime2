@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% set active_page = "about" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<!--page content-->
+<div class="container-lg mt-3">
+    <div class="accordion" id="AboutTheData">
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="JSON">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cJSON">
+                    What is a JSON File
+                </button>
+            </h2>
+            <div id="cJSON" class="accordion-collapse collapse show" data-bs-parent="#AboutTheData">
+                <div class="accordion-body">
+                    <p>JSON means JavaScript Object Notation. It is a data format written in plain text that can be read
+                        and written by
+                        computers and humans. It's organized as a series of name, value pairs. Many different types of
+                        data can be
+                        represented in this format such as &ldquo;object, record, struct, dictionary, hash table, keyed
+                        list, or
+                        associative arrays.&rdquo; The name implies that it was originally written to support
+                        JavaScript, utilities to read
+                        and write JSON data exist in most programming languages. <a
+                            href="https://www.json.org/json-en.html">Introducing JSON</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="Source">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#cSource">
+                    Source of the Data File
+                </button>
+            </h2>
+            <div id="cSource" class="accordion-collapse collapse" data-bs-parent="#AboutTheData">
+                <div class="accordion-body">
+                    <p>The data files come from <a href="https://think.cs.vt.edu/">CORGIS Project</a> (The Collection Of
+                        Really Great,
+                        Interesting, Situated Datasets). The site provides a large variety of datasets in different
+                        formats specifically
+                        for use in programming assignments.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="UCR">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#cUCR">
+                    Uniform Crime Reporting Porgram
+                </button>
+            </h2>
+            <div id="cUCR" class="accordion-collapse collapse" data-bs-parent="#AboutTheData">
+                <div class="accordion-body">
+                    <p>The data comes from the <a
+                            href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/">FBI's
+                            Uniform Crime Reporting Program.</a> The FBI has been collecting crime statistical data from
+                        more than 18,000
+                        sources since 1930. They do this to provide reliable and consistent data to law enforcement, law
+                        makers, and
+                        researchers. Data is gathered from the National Incident-Based Reporting System (NIRBS), Summary
+                        Reporting System
+                        (SRS), The Law Enforcement Officers Kill and Assaulted Program (LEOKA), and Hate Crime
+                        Statistics.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="Categories">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#cCategories">
+                    Data Categories
+                </button>
+            </h2>
+            <div id="cCategories" class="accordion-collapse collapse" data-bs-parent="#AboutTheData">
+                <div class="accordion-body">
+                    <p>The data in this data set covers crime arranged by state and includes the years from 1960 to
+                        2019. The data is
+                        presented as both Rates per 100,000 persons, and total numbers. The crimes are divided into two
+                        categories.
+                        Property crime that refers to burglary, larceny, and motor related crime. And violent crime
+                        refers to assault,
+                        murder, rape, and robbery. <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/offenses-known-to-law-enforcement
+                  ">Offenses Known to Law Enforcement</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="Anomolies">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#cAnomolies">
+                    Data Anomolies
+                </button>
+            </h2>
+            <div id="cAnomolies" class="accordion-collapse collapse" data-bs-parent="#AboutTheData">
+                <div class="accordion-body">
+                    <p>There seems to be some bad data in the dataset. For the years 2013, 2014, and 2015 the values
+                        are often too large or too small to fit with the rest of the data. I cannot find anything on the
+                        CORGIS website about it or though a general Google search.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% set active_page = "rates" %}
+
+{% block title %}Crime Rates{% endblock %}
+
+{% block content %}
+<!--page content-->
+<div class="container-lg mt-3">
+    <!-- alert will be set if there was something wrong last form post -->
+    {% if alert is defined %}
+        <div class="alert alert-warning">
+            <strong>{{ alert }}</strong>
+        </div>
+    {% endif %}  
+        
+    <form method="post" class="row my-3">
+
+        <div class="col-3">
+            <select class="form-select" name="stateSelect" aria-label="Choose State">
+                <!-- if thisState is defined, then have it chosen in the select -->
+                <option {% if thisState is not defined %}selected{% endif %}>Choose State</option>
+                {% for state in stateList %}
+                    <option value="{{ state }}" {% if thisState == state %}selected{% endif %}>{{ state }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-3">
+            <select class="form-select" name="crimeSelect" aria-label="Type of Crime">
+                <option {%if thisCrime is not defined %}selected{% endif %}>Type of Crime</option>
+                <optgroup label="Property">
+                    <option {% if thisCrime == "pAll" %}selected{% endif %} value="pAll">&nbsp;All</option>
+                    <option {% if thisCrime == "pBurglary" %}selected{% endif %} value="pBurglary">&nbsp;Burglary</option>
+                    <option {% if thisCrime == "pLarceny" %}selected{% endif %} value="pLarceny">&nbsp;Larceny</option>
+                    <option {% if thisCrime == "pMotor" %}selected{% endif %} value="pMotor">&nbsp;Motor</option>
+                </optgroup>
+                <optgroup label="Violent">
+                    <option {% if thisCrime == "vAll" %}selected{% endif %} value="vAll">&nbsp;All</option>
+                    <option {% if thisCrime == "vAssault" %}selected{% endif %} value="vAssault">&nbsp;Assault</option>
+                    <option {% if thisCrime == "vMurder" %}selected{% endif %} value="vMurder">&nbsp;Murder</option>
+                    <option {% if thisCrime == "vRape" %}selected{% endif %} value="vRape">&nbsp;Rape</option>
+                    <option {% if thisCrime == "vRobbery" %}selected{% endif %} value="vRobbery">&nbsp;Robbery</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="col-3">
+            <button id="rateGraph" type="submit" class="btn btn-primary">Graph</button>
+        </div>
+        
+    </form>
+    <div class="row">
+        <canvas id="crimeRateChart" width="400" height="200"></canvas>
+    </div>
+</div>
+<!-- if the data is defined, then draw the graph -->
+{% if data is defined %}
+    <script>
+        const ctx = document.getElementById('crimeRateChart');
+        const rateChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ labels }},
+                datasets: [{
+                    label: '{{ thisState }} {{ thisCrime[1:] }} rate per 100,000',
+                    data: {{ data }},
+                    borderWidth: 1,
+                    borderColor: 'red',
+                    pointRadius: 3,
+                    pointBackgroundColor: 'red',
+                }]
+            },
+            options: {
+                responsive: true,
+            },
+        });
+    </script>
+{% endif %}
+{% endblock %}

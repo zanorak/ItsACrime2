@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 2 meta tags should come first in the head; any other head content should come *after* these tags -->
+
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="/static/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="/static/bootstrap.min.js"></script>
+
+  <!-- chartjs library -->
+  <script src="/static/chart.min.js"></script>
+  
+  <title>{% block title %}{% endblock %}</title>
+
+</head>
+
+<body>
+  <!--nav bar-->
+  <div class="container-lg">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand mb-0 h1">It&rsquo;s a Crime</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav nav">
+            <li class="nav-item">
+              <a class="nav-link{% if active_page == 'about' %} active{% endif %}" href="/" role="tab">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link{% if active_page == 'rates' %} active{% endif %}" href="/rates">Rates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link{% if active_page == 'compare' %} active{% endif %}" href="/compare">Compare</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  </nav>
+  </div>
+
+  <!--page content-->
+  {% block content %}
+  {% endblock %}
+
+</body>
+
+</html>
